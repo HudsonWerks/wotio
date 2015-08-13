@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
+# From Ship.io. Modified by Charles Hamilton.
+
 ###############################
 ### SHIPIOT ACCOUNT DETAILS ###
 ###############################
-shipiot_username = "hudsonwerks"
-shipiot_token = "7a6268c63e3b079d3d6777af4fd5ad5c"
-shipiot_bip_name = "bbbtweet"
+shipiot_username = "<USER_NAME>"
+shipiot_token = "<API_TOKEN>"
+shipiot_bip_name = "<BIP_NAME>"
 ###############################
 
 import Adafruit_BBIO.GPIO as gpio  
@@ -25,7 +27,6 @@ def on_press():
     ############################
     r = requests.post(
         "http://%s.api.shipiot.net/bip/http/%s/" % (shipiot_username, shipiot_bip_name),
-#        "https://%s.shipiot.net/bip/http/%s/" % (shipiot_username, shipiot_bip_name),
         auth=(shipiot_username, shipiot_token),
         data=json.dumps(
             {"title": "BBB", "body": "Beaglebone Black Button Pressed!\n" + time.asctime(time.localtime(time.time()))}),
