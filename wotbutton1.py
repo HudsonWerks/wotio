@@ -3,8 +3,8 @@
 ###############################
 ### SHIPIOT ACCOUNT DETAILS ###
 ###############################
-shipiot_username = "user_name"
-shipiot_token = "API_TOKEN"
+shipiot_username = "hudsonwerks"
+shipiot_token = "7a6268c63e3b079d3d6777af4fd5ad5c"
 shipiot_bip_name = "bbbtweet"
 ###############################
 
@@ -22,18 +22,7 @@ def on_press():
     ## to bip.io, which then acts upon it according to the `bip`
     ## that was created. Note that since we are using twitter in our
     ## demo, and twitter has an anti-spam feature, 
-#     ############################
-#     r = requests.post(
-#         "https://%s.shipiot.net/bip/http/%s/" % (shipiot_username, shipiot_bip_name),
-# #        "https://%s.api.shipiot.net/bip/http/%s/" % (shipiot_username, shipiot_bip_name),
-#         auth=(shipiot_username, shipiot_token),
-#         data=json.dumps(
-#             {"title": "BBB", "body": "Beaglebone Black Button Pressed!\n" + time.asctime(time.localtime(time.time()))}),
-#         headers={"Content-Type": "application/json"}
-#     )
-#     ############################
-    
-      ############################
+    ############################
     r = requests.post(
         "http://%s.api.shipiot.net/bip/http/%s/" % (shipiot_username, shipiot_bip_name),
 #        "https://%s.shipiot.net/bip/http/%s/" % (shipiot_username, shipiot_bip_name),
@@ -42,11 +31,6 @@ def on_press():
             {"title": "BBB", "body": "Beaglebone Black Button Pressed!\n" + time.asctime(time.localtime(time.time()))}),
         headers={"Content-Type": "application/json"}
     )
-    ############################
-    
-#     http://hudsonwerks.api.shipiot.net/bip/http/bbbtweet 
-#    hudsonwerks.api.shipiot.net/bip/http/bbbtweet/
-    
     ############################
     if r.status_code != 200:
         print "ShipIOT Lite connection failed. Please try again"
